@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  *文件上传工具类
  * @@author daiba
- * 
+ *
  */
 public class FileUtils {
 
@@ -28,6 +28,7 @@ public class FileUtils {
      * @param map
      * @param request
      * @return
+     *
      */
     public boolean uploadFileRendInfoToMap(Map<String, Object> map, HttpServletRequest request) {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
