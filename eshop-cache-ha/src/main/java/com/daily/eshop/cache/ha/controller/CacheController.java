@@ -1,6 +1,8 @@
 package com.daily.eshop.cache.ha.controller;
 
 import com.daily.eshop.cache.ha.http.HttpClientUtils;
+import com.daily.eshop.cache.ha.hystrix.command.GetProductInfoCommond;
+import com.daily.eshop.cache.ha.model.ProductInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,5 +27,24 @@ public class CacheController {
 		
 		return "success";
 	}
+
+    /**
+     * 一次性批量查询多条商品数据的请求
+     * @param productIds
+     * @return
+     */
+    @RequestMapping("/getProductInfos")
+    @ResponseBody
+	public String getProductInfos(String productIds) {
+        String[] productIdArray = productIds.split(",");
+        for (String productId:productIdArray) {
+            GetProductInfoCommond getProductInfoCommond = new GetProductInfoCommond(
+                    Long.valueOf(productId));
+            ProductInfo productInfo = getProductInfoCommond.execute();
+            System.out.println(productInfo);
+            System.out.println(getProductInfoCommond.isResponseFromCache());
+        }
+        return "success";
+    }
 	
 }

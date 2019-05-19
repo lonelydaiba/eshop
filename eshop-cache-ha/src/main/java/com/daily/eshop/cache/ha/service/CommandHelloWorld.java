@@ -2,6 +2,7 @@ package com.daily.eshop.cache.ha.service;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 
 /**
  * @author daili
@@ -15,6 +16,14 @@ public class CommandHelloWorld extends HystrixCommand {
         super(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"));
         this.name = name;
     }
+
+    public CommandHelloWorld(String name,String example) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
+        this.name = name;
+    }
+
 
     @Override
     protected Object run() throws Exception {
