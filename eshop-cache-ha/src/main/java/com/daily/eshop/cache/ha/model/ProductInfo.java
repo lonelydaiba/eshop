@@ -1,5 +1,8 @@
 package com.daily.eshop.cache.ha.model;
 
+/**
+ * 商品信息
+ */
 public class ProductInfo {
     /**
      * return "{\"id\": " + productId + ", \"name\": \"iphone7手机\", \"price\": 5599, \"pictureList\":\"a.jpg,b.jpg\", \"specification\": \"iphone7的规格\", \"service\": \"iphone7的售后服务\", \"color\": \"红色,白色,黑色\", \"size\": \"5.5\", \"shopId\": 1, \"modifiedTime\": \"2017-01-01 12:00:00\"}";
@@ -10,11 +13,21 @@ public class ProductInfo {
 
     private String name;
 
-    private double price;
+    private Integer price;
 
     private String pictureList;
 
+    private String specification;
+
+    private String service;
+
+    private String color;
+
+    private String size;
+
     private Long shopId;
+
+    private String modifiedTime;
 
     public Long getId() {
         return id;
@@ -32,11 +45,11 @@ public class ProductInfo {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -54,5 +67,45 @@ public class ProductInfo {
 
     public void setShopId(Long shopId) {
         this.shopId = shopId;
+    }
+
+    public String getSpecification() {
+        return specification;
+    }
+
+    public void setSpecification(String specification) {
+        this.specification = specification;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(String modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 }

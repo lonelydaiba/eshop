@@ -20,7 +20,8 @@ public class CommandHelloWorld extends HystrixCommand {
     public CommandHelloWorld(String name,String example) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
                 .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
-                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
+                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)
+                        .withFallbackIsolationSemaphoreMaxConcurrentRequests(10)));
         this.name = name;
     }
 
@@ -28,7 +29,8 @@ public class CommandHelloWorld extends HystrixCommand {
     @Override
     protected Object run() throws Exception {
         //int i = 1/0;
-        return "hello "+ name + "!";
+        throw new RuntimeException("this command always fails");
+        //return "hello "+ name + "!";
     }
 
     /**
@@ -37,6 +39,7 @@ public class CommandHelloWorld extends HystrixCommand {
      */
     @Override
     protected Object getFallback() {
-        return "failed";
+        return "Hello Failure " + name + "!";
+        //return "failed";
     }
 }

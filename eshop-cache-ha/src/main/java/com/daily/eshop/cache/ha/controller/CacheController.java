@@ -1,5 +1,6 @@
 package com.daily.eshop.cache.ha.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.daily.eshop.cache.ha.http.HttpClientUtils;
 import com.daily.eshop.cache.ha.hystrix.command.GetProductInfoCommond;
 import com.daily.eshop.cache.ha.model.ProductInfo;
@@ -41,7 +42,7 @@ public class CacheController {
             GetProductInfoCommond getProductInfoCommond = new GetProductInfoCommond(
                     Long.valueOf(productId));
             ProductInfo productInfo = getProductInfoCommond.execute();
-            System.out.println(productInfo);
+            System.out.println(JSONObject.toJSON(productInfo));
             System.out.println(getProductInfoCommond.isResponseFromCache());
         }
         return "success";

@@ -6,8 +6,9 @@ import com.daily.eshop.cache.ha.model.ProductInfo;
 import com.netflix.hystrix.*;
 import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategyDefault;
 
-import javax.naming.ldap.PagedResultsControl;
-
+/**
+ * 商品信息Commond
+ */
 public class GetProductInfoCommond extends HystrixCommand<ProductInfo> {
 
     public static final HystrixCommandKey KEY = HystrixCommandKey.Factory.asKey("GetProductInfoCommond");

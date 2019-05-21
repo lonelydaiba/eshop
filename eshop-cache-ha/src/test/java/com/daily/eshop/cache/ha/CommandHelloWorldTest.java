@@ -1,10 +1,10 @@
 package com.daily.eshop.cache.ha;
 
 import com.daily.eshop.cache.ha.service.CommandHelloWorld;
+import org.junit.Assert;
 import org.junit.Test;
 import rx.Observable;
 import rx.Observer;
-import rx.functions.Action1;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -16,7 +16,8 @@ public class CommandHelloWorldTest {
      */
     @Test
     public void testSynchronous() {
-        System.out.println(new CommandHelloWorld("World").execute());
+        //System.out.println(new CommandHelloWorld("World").execute());
+        Assert.assertEquals("Hello Failure World!", new CommandHelloWorld("World").execute());
     }
 
 
